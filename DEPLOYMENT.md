@@ -73,7 +73,7 @@ Content-Type: application/json
 }
 ```
 
-### 5. Rate Limiting Test (Send 15 requests consecutively within 1 minute)
+### 5. Rate Limiting Test (Send 25 requests consecutively within 1 minute)
 ```bash
 for i in {1..25}; do 
   curl -H "X-API-Key: prod-agent-secure-key-123" \
@@ -83,7 +83,7 @@ for i in {1..25}; do
   echo ""
 done
 ```
-**Expected Response on 11th request:**
+**Expected Response on 22nd request:**
 ```http
 HTTP/1.1 429 Too Many Requests
 Retry-After: 60
