@@ -56,7 +56,7 @@ Content-Type: application/json
 ### 4. API Test (With Authentication)
 ```bash
 curl -i -X POST https://sorahoang.up.railway.app/ask \
-  -H "X-API-Key: prod-agent-secure-key" \
+  -H "X-API-Key: prod-agent-secure-key-123" \
   -H "Content-Type: application/json" \
   -d '{"question": "What is Docker?"}'
 ```
@@ -75,8 +75,8 @@ Content-Type: application/json
 
 ### 5. Rate Limiting Test (Send 15 requests consecutively within 1 minute)
 ```bash
-for i in {1..15}; do 
-  curl -H "X-API-Key: prod-agent-secure-key" \
+for i in {1..25}; do 
+  curl -H "X-API-Key: prod-agent-secure-key-123" \
        -H "Content-Type: application/json" \
        -d '{"question": "Test limit '$i'"}' \
        https://sorahoang.up.railway.app/ask
@@ -89,13 +89,13 @@ HTTP/1.1 429 Too Many Requests
 Retry-After: 60
 Content-Type: application/json
 
-{"detail":"Rate limit exceeded: 10 req/min"}
+{"detail":"Rate limit exceeded: 20 req/min"}
 ```
 
 ## Environment Variables Set
 - `PORT`: `8000` (định tuyến tự động bởi Railway)
 - `ENVIRONMENT`: `production`
-- `AGENT_API_KEY`: `prod-agent-secure-key`
+- `AGENT_API_KEY`: `prod-agent-secure-key-123`
 - `REDIS_URL`: `redis://default:password@redis-service-host:6379/0` (liên kết từ Redis Add-on)
 - `LLM_MODEL`: `gpt-4o-mini`
 
