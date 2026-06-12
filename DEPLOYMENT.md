@@ -1,8 +1,8 @@
 # Deployment Information
 
 ## Public URL
-- **Agent API URL:** `https://day12-production-agent.up.railway.app`
-- **Health Check URL:** `https://day12-production-agent.up.railway.app/health`
+- **Agent API URL:** `https://sorahoang.up.railway.app`
+- **Health Check URL:** `https://sorahoang.up.railway.app/health`
 
 ## Platform
 - **Hosting Platform:** Railway
@@ -12,7 +12,7 @@
 
 ### 1. Health Check (Liveness Probe)
 ```bash
-curl https://day12-production-agent.up.railway.app/health
+curl https://sorahoang.up.railway.app/health
 ```
 **Expected Response:**
 ```json
@@ -30,7 +30,7 @@ curl https://day12-production-agent.up.railway.app/health
 
 ### 2. Readiness Check (Readiness Probe)
 ```bash
-curl https://day12-production-agent.up.railway.app/ready
+curl https://sorahoang.up.railway.app/ready
 ```
 **Expected Response:**
 ```json
@@ -41,7 +41,7 @@ curl https://day12-production-agent.up.railway.app/ready
 
 ### 3. API Test (Without Authentication)
 ```bash
-curl -i -X POST https://day12-production-agent.up.railway.app/ask \
+curl -i -X POST https://sorahoang.up.railway.app/ask \
   -H "Content-Type: application/json" \
   -d '{"question": "What is Docker?"}'
 ```
@@ -55,7 +55,7 @@ Content-Type: application/json
 
 ### 4. API Test (With Authentication)
 ```bash
-curl -i -X POST https://day12-production-agent.up.railway.app/ask \
+curl -i -X POST https://sorahoang.up.railway.app/ask \
   -H "X-API-Key: prod-agent-secure-key" \
   -H "Content-Type: application/json" \
   -d '{"question": "What is Docker?"}'
@@ -79,7 +79,7 @@ for i in {1..15}; do
   curl -H "X-API-Key: prod-agent-secure-key" \
        -H "Content-Type: application/json" \
        -d '{"question": "Test limit '$i'"}' \
-       https://day12-production-agent.up.railway.app/ask
+       https://sorahoang.up.railway.app/ask
   echo ""
 done
 ```
